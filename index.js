@@ -21,24 +21,8 @@ const octokit = new Octokit({
 });
 
 async function main() {
-  envCheck()
   const stats = await getStravaStats();
   await updateGist(stats);
-}
-
-/**
-  * Check Github Token & Gist
-  */
-async function envCheck() {
-  if(!GITHUB_TOKEN || !GIST_ID) {
-      throw new Error(
-        `
-         strava-box check that your env have error
-         You can solve this problem by checking your:GIRHUB_TOKEN&GIST_ID
-         Please change these Environment Secrets like README.md: https://github.com/JohnPhamous/strava-box#readme
-        `
-      )
-  }
 }
 
 /**
